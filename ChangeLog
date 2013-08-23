@@ -1,0 +1,2 @@
+Changes from version 0.9-1 to 0.9.1-1:
+	* Added an option to control whether data is reinflated after autocorrelation is removed. Changing this option will affect significance levels.
