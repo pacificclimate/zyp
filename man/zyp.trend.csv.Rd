@@ -14,7 +14,7 @@ zyp.trend.dataframe(indat, metadata.cols, method=c("yuepilon", "zhang"),
                     conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
 zyp.trend.csv(filename, output.filename, metadata.cols,
               method=c("yuepilon", "zhang"), conf.intervals=TRUE,
-              preserve.range.for.sig.test=TRUE, csv.header=TRUE)
+              csv.header=TRUE, preserve.range.for.sig.test=TRUE)
 }
 \arguments{
   \item{indat}{the input data frame.}

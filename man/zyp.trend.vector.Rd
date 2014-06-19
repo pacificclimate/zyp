@@ -9,13 +9,15 @@
   method of computing nonlinear prewhitened trends.
 }
 \usage{
-zyp.trend.vector(data, method=c("yuepilon", "zhang"),
+zyp.trend.vector(y, x=1:length(y), method=c("yuepilon", "zhang"),
 conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
-zyp.zhang(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
-zyp.yuepilon(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
+zyp.zhang(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
+zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
 }
 \arguments{
-  \item{data}{the input vector.}
+  \item{y}{vector of input data.}
+
+  \item{x}{vector of time data (optional).}
 
   \item{method}{the prewhitened trend method to use.}
 
@@ -54,14 +56,20 @@ zyp.yuepilon(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
 }
 \examples{
 # Without confidence intervals, using the wrapper routine
-d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), "yuepilon", FALSE)
+d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), method="yuepilon", conf.intervals=FALSE)
 
 # With confidence intervals, using the wrapper routine
-d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), "yuepilon")
+d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), method="yuepilon")
 
 # With confidence intervals, not using the wrapper routine
 d.zhang <- zyp.zhang(c(0, 1, 3, 4, 2, 5))
 d.yuepilon <- zyp.yuepilon(c(0, 1, 3, 4, 2, 5))
+
+# With confidence intervals, with time data.
+t.dat <- c(0, 0.3, 1, 3, 3.4, 6)
+d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), t.dat, method="yuepilon")
+d.zhang <- zyp.zhang(c(0, 1, 3, 4, 2, 5), t.dat)
+d.yuepilon <- zyp.yuepilon(c(0, 1, 3, 4, 2, 5), t.dat)
 }
 \keyword{ts}
 \keyword{robust}

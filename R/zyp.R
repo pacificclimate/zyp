@@ -20,7 +20,7 @@ zyp.sen <- function(formula, dataframe) {
   intercepts <- y - slope * x
   intercept <- median(intercepts)
 
-  res <- list(coefficients=c(intercept, slope), slopes = slopes, intercepts = intercepts, rank=2, residuals=(x - slope * y + intercept), x=x, y=y)
+  res <- list(coefficients=c(intercept, slope), slopes = slopes, intercepts = intercepts, rank=2, residuals=(y - slope * x + intercept), x=x, y=y)
   
   names(res$coefficients) = c("Intercept", term[2])
   class(res) = c("zyp", "lm")
@@ -50,10 +50,13 @@ confint.zyp <- function (object, parm, level = 0.95, ...) {
   return(res)
 }
 
-zyp.zhang <- function(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
-  data <- as.numeric(as.vector(data))
+zyp.zhang <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
+  data <- as.numeric(as.vector(y))
+  if(is.logical(x))
+    stop("x cannot be of type 'logical' (perhaps you meant to specify conf.intervals?)")
+
   n <- length(data)
-  t <- 1:n
+  t <- x
 
   ret <- c(lbound = NA, trend = NA, trendp = NA, ubound = NA,
            tau = NA, sig = NA, nruns = NA, autocor = NA, valid_frac = NA, linear = NA, intercept = NA)
@@ -68,10 +71,10 @@ zyp.zhang <- function(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRU
 
   if(c < 0.05) {
     y <- data
-    yt <- 1:n
+    yt <- t
   } else {
     y <- ifelse(rep(preserve.range.for.sig.test, n - 1), (data[2:n] - c * data[1:(n-1)]) / (1 - c), data[2:n] - c * data[1:(n-1)])
-    yt <- 1:(n-1)
+    yt <- t[1:(n-1)]
   }
 
   dmap <- which(!is.na(y))        
@@ -134,12 +137,15 @@ zyp.zhang <- function(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRU
   return(ret)
 }
 
-zyp.yuepilon <- function(data, conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
-  dat <- as.numeric(as.vector(data))
+zyp.yuepilon <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
+  dat <- as.numeric(as.vector(y))
 
+  if(is.logical(x))
+    stop("x cannot be of type 'logical' (perhaps you meant to specify conf.intervals?)")
+  
   n <- length(dat)
-  t <- 1:n
-  t.prime <- 1:(n-1)
+  t <- x
+  t.prime <- t[1:(n-1)]
   y <- dat
 
   ret <- c(lbound = NA, trend=NA, trendp=NA, ubound = NA,
@@ -192,24 +198,27 @@ zyp.yuepilon <- function(data, conf.intervals=TRUE, preserve.range.for.sig.test=
 
   ret <- c(lbound = as.numeric(ci[2, 1]), trend=as.numeric(trend), trendp=as.numeric(trend) * n, ubound = as.numeric(ci[2, 2]),
            tau=as.numeric(tau), sig=as.numeric(Bsig), nruns=1, autocor=as.numeric(ac), valid_frac=as.numeric(length(dmap)/length(y)),
-           linear=as.numeric(lm(data~t)$coefficients[2]), intercept=as.numeric(sen$coefficients[1]))
+           linear=as.numeric(lm(dat~t)$coefficients[2]), intercept=as.numeric(sen$coefficients[1]))
            
   return(ret)
 }
 
 # Applies either a Yue Pilon or Zhang trend calculation to a vector of data
-zyp.trend.vector <- function(data, method=c("yuepilon", "zhang"), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
+zyp.trend.vector <- function(y, x=1:length(y), method=c("yuepilon", "zhang"), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
+  if(is.character(x))
+    stop("x cannot be of type character (perhaps you meant to specify method?)")
+
   switch(match.arg(method),
-         yuepilon = zyp.yuepilon(data, conf.intervals, preserve.range.for.sig.test),
-         zhang    = zyp.zhang(data, conf.intervals, preserve.range.for.sig.test)
+         yuepilon = zyp.yuepilon(y, x, conf.intervals, preserve.range.for.sig.test),
+         zhang    = zyp.zhang(y, x, conf.intervals, preserve.range.for.sig.test)
          )
 }
 
 # Applies either a Yue Pilon or Zhang trend calculation to a data frame where there is one station per line with no metadata (and each year/month is a column of data)
 zyp.trend.dataframe <- function(indat, metadata.cols, method=c("yuepilon", "zhang"), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE) {
   trend <- switch(match.arg(method),
-           yuepilon = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.yuepilon, conf.intervals, preserve.range.for.sig.test))),
-           zhang    = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.zhang, conf.intervals, preserve.range.for.sig.test))) )
+           yuepilon = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.yuepilon, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))),
+           zhang    = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.zhang, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))) )
 
   if(metadata.cols > 0) {
     trend <- cbind(indat[,1:metadata.cols], trend)

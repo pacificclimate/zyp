@@ -1,2 +1,7 @@
+Changes from version 0.9-3 to 0.10-1:
+	* CHECK YOUR CODE. This version may cause code which does not use named parameters for conf.intervals and method for zyp.trend.vector, zyp.trend.yuepilon, and zyp.trend.zhang to fail. Naming the parameters will make the code work again.
+	* Added options to zyp.trend.vector to allow the user to supply time data instead of assuming even spacing.
+Changes from version 0.9.1-1 to 0.9-3:
+	* Fixed a bug where the residuals returned by the 'zyp.sen' function were incorrectly calculated.
 Changes from version 0.9-1 to 0.9.1-1:
 	* Added an option to control whether data is reinflated after autocorrelation is removed. Changing this option will affect significance levels.
