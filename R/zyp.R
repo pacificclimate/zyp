@@ -133,8 +133,8 @@ zyp.zhang <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.
 
   ret <- c(lbound = as.numeric(ci[2, 1]), trend=as.numeric(trend), trendp=(as.numeric(trend) * n), ubound = as.numeric(ci[2, 2]),
            tau=as.numeric(tau), sig=as.numeric(Bsig), nruns=as.numeric(k), autocor=as.numeric(c0), valid_frac=as.numeric(length(dmap)/length(y)),
-           linear=as.numeric(lm(data~t)$coefficients[2]), lbound_intercept=as.numeric(ci[1,1]), intercept=as.numeric(sen$coefficients[1]),
-           ubound_intercept=as.numeric(ci[1,2]))
+           linear=as.numeric(lm(data~t)$coefficients[2]), intercept=as.numeric(sen$coefficients[1]),
+           lbound_intercept=as.numeric(ci[1,1]), ubound_intercept=as.numeric(ci[1,2]))
   return(ret)
 }
 
@@ -199,8 +199,8 @@ zyp.yuepilon <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.f
 
   ret <- c(lbound = as.numeric(ci[2, 1]), trend=as.numeric(trend), trendp=as.numeric(trend) * n, ubound = as.numeric(ci[2, 2]),
            tau=as.numeric(tau), sig=as.numeric(Bsig), nruns=1, autocor=as.numeric(ac), valid_frac=as.numeric(length(dmap)/length(y)),
-           linear=as.numeric(lm(dat~t)$coefficients[2]), lbound_intercept=as.numeric(ci[1,1]), intercept=as.numeric(sen$coefficients[1]),
-           ubound_intercept=as.numeric(ci[1,2]))
+           linear=as.numeric(lm(dat~t)$coefficients[2]), intercept=as.numeric(sen$coefficients[1]),
+           lbound_intercept=as.numeric(ci[1,1]), ubound_intercept=as.numeric(ci[1,2]))
 
   return(ret)
 }
