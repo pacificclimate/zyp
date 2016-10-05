@@ -63,8 +63,8 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
   \item{valid_frac}{the fraction of the data which is valid (not NA)
   once autocorrelation is removed.}
   \item{linear}{the least squares fit trend on the same dat.}
-  \item{lbound_intercept}{the lower bound of the estimate of the intercept of the Sen's slope (trend).}
   \item{intercept}{the intercept of the Sen's slope (trend).}
+  \item{lbound_intercept}{the lower bound of the estimate of the intercept of the Sen's slope (trend).}
   \item{ubound_intercept}{the upper bound of the estimate of the intercept of the Sen's slope (trend).}
 
 }
