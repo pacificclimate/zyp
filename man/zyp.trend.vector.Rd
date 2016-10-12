@@ -48,7 +48,9 @@ zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=
   once autocorrelation is removed.}
   \item{linear}{the least squares fit trend on the same dat.}
   \item{intercept}{the intercept of the Sen's slope (trend).}
-  
+  \item{lbound_intercept}{the lower bound of the estimate of the intercept of the Sen's slope (trend).}
+  \item{ubound_intercept}{the upper bound of the estimate of the intercept of the Sen's slope (trend).}
+
 }
 
 \seealso{

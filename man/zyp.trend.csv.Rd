@@ -18,7 +18,7 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
 }
 \arguments{
   \item{indat}{the input data frame.}
-  
+
   \item{filename}{the filename of the input CSV file.}
 
   \item{output.filename}{the filename to write output to.}
@@ -44,7 +44,7 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
   to have the same length of timeseries. NA values are handled
   correctly, so if you have several timeseries of unequal length you can
   pad them with NA values to provide valid input.
-  
+
   The prewhitened trend computation methods used are either Zhang's
   method (described in Wang and Swail, 2001) or Yue and Pilon's method
   (described in Yue and Pilon, 2002).
@@ -64,7 +64,9 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
   once autocorrelation is removed.}
   \item{linear}{the least squares fit trend on the same dat.}
   \item{intercept}{the intercept of the Sen's slope (trend).}
-  
+  \item{lbound_intercept}{the lower bound of the estimate of the intercept of the Sen's slope (trend).}
+  \item{ubound_intercept}{the upper bound of the estimate of the intercept of the Sen's slope (trend).}
+
 }
 
 \seealso{
