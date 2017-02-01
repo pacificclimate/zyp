@@ -59,7 +59,8 @@ zyp.zhang <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.
   t <- x
 
   ret <- c(lbound = NA, trend = NA, trendp = NA, ubound = NA,
-           tau = NA, sig = NA, nruns = NA, autocor = NA, valid_frac = NA, linear = NA, intercept = NA)
+           tau = NA, sig = NA, nruns = NA, autocor = NA, valid_frac = NA,
+           linear = NA, intercept = NA, lbound_intercept = NA, ubound_intercept = NA)
 
   # Prewhiten the original series
   c <- acf(data,lag.max=1,plot=FALSE,na.action=na.pass)$acf[2]
@@ -150,7 +151,8 @@ zyp.yuepilon <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.f
   y <- dat
 
   ret <- c(lbound = NA, trend=NA, trendp=NA, ubound = NA,
-           tau=NA, sig=NA, nruns=NA, autocor=NA, valid_frac=NA, linear=NA, intercept=NA)
+           tau=NA, sig=NA, nruns=NA, autocor=NA, valid_frac=NA, linear=NA,
+           intercept=NA, lbound_intercept = NA, ubound_intercept = NA)
 
 
   dmap <- which(!is.na(y))
