@@ -213,21 +213,21 @@ zyp.yuepilon <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.f
 }
 
 # Applies either a Yue Pilon or Zhang trend calculation to a vector of data
-zyp.trend.vector <- function(y, x=1:length(y), method=c("yuepilon", "zhang"), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE) {
+zyp.trend.vector <- function(y, x=1:length(y), method="zhang", conf.intervals=TRUE, preserve.range.for.sig.test=FALSE) {
   if(is.character(x))
     stop("x cannot be of type character (perhaps you meant to specify method?)")
 
   switch(match.arg(method),
-         yuepilon = zyp.yuepilon(y, x, conf.intervals, preserve.range.for.sig.test),
-         zhang    = zyp.zhang(y, x, conf.intervals, preserve.range.for.sig.test)
+         zhang    = zyp.zhang(y, x, conf.intervals, preserve.range.for.sig.test),
+         yuepilon = zyp.yuepilon(y, x, conf.intervals, preserve.range.for.sig.test)
          )
 }
 
 # Applies either a Yue Pilon or Zhang trend calculation to a data frame where there is one station per line with no metadata (and each year/month is a column of data)
-zyp.trend.dataframe <- function(indat, metadata.cols, method=c("yuepilon", "zhang"), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE) {
+zyp.trend.dataframe <- function(indat, metadata.cols, method="zhang", conf.intervals=TRUE, preserve.range.for.sig.test=FALSE) {
   trend <- switch(match.arg(method),
-           yuepilon = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.yuepilon, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))),
-           zhang    = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.zhang, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))) )
+           zhang    = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.zhang, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))),
+           yuepilon = as.data.frame(t(apply(indat[, (1 + metadata.cols):ncol(indat)], 1, zyp.yuepilon, conf.intervals=conf.intervals, preserve.range.for.sig.test=preserve.range.for.sig.test))) )
 
   if(metadata.cols > 0) {
     trend <- cbind(indat[,1:metadata.cols], trend)
@@ -238,7 +238,7 @@ zyp.trend.dataframe <- function(indat, metadata.cols, method=c("yuepilon", "zhan
 }
 
 # Applies either a Yue Pilon or Zhang trend calculation to a file in the format "metadata_1,...,metadata_n,year1,year2,...", where n is the number of metadata columns and the timeseries extending across the row
-zyp.trend.csv <- function(filename, output.filename, metadata.cols, method=c("yuepilon", "zhang"), conf.intervals=TRUE, csv.header=TRUE, preserve.range.for.sig.test=FALSE) {
+zyp.trend.csv <- function(filename, output.filename, metadata.cols, method="zhang", conf.intervals=TRUE, csv.header=TRUE, preserve.range.for.sig.test=FALSE) {
   indat <- read.csv(filename, csv.header)
   write.csv(zyp.trend.dataframe(indat, metadata.cols, method, conf.intervals, preserve.range.for.sig.test), output.filename, row.names=FALSE)
 }
