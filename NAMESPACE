@@ -1,0 +1,5 @@
+importFrom("stats", "acf", "confint", "lm", "median", "na.pass",
+             "qnorm", "terms", "var")
+importFrom("utils", "read.csv", "write.csv")
+
+importFrom("Kendall", "Kendall")

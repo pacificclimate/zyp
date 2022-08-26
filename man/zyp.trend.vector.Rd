@@ -9,10 +9,10 @@
   method of computing nonlinear prewhitened trends.
 }
 \usage{
-zyp.trend.vector(y, x=1:length(y), method=c("yuepilon", "zhang"),
-conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
-zyp.zhang(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
-zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
+zyp.trend.vector(y, x=1:length(y), method="zhang",
+conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
+zyp.zhang(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
+zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
 }
 \arguments{
   \item{y}{vector of input data.}
