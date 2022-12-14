@@ -9,7 +9,7 @@
   method of computing nonlinear prewhitened trends.
 }
 \usage{
-zyp.trend.vector(y, x=1:length(y), method="zhang",
+zyp.trend.vector(y, x=1:length(y), method=c("zhang", "yuepilon"),
 conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
 zyp.zhang(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
 zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
@@ -58,10 +58,10 @@ zyp.yuepilon(y, x=1:length(y), conf.intervals=TRUE, preserve.range.for.sig.test=
 }
 \examples{
 # Without confidence intervals, using the wrapper routine
-d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), method="yuepilon", conf.intervals=FALSE)
+d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), conf.intervals=FALSE)
 
 # With confidence intervals, using the wrapper routine
-d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5), method="yuepilon")
+d <- zyp.trend.vector(c(0, 1, 3, 4, 2, 5))
 
 # With confidence intervals, not using the wrapper routine
 d.zhang <- zyp.zhang(c(0, 1, 3, 4, 2, 5))

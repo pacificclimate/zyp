@@ -10,10 +10,10 @@
   nonlinear prewhitened trends.
 }
 \usage{
-zyp.trend.dataframe(indat, metadata.cols, method="zhang",
+zyp.trend.dataframe(indat, metadata.cols, method=c("zhang", "yuepilon"),
                     conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
 zyp.trend.csv(filename, output.filename, metadata.cols,
-              method="zhang", conf.intervals=TRUE,
+              method=c("zhang", "yuepilon"), conf.intervals=TRUE,
               csv.header=TRUE, preserve.range.for.sig.test=FALSE)
 }
 \arguments{
