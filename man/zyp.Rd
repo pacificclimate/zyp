@@ -4,6 +4,18 @@
 \docType{package}
 \title{ZYP Prewhitened Nonlinear Trend Analysis Package}
 \description{
+Update April 1 2022
+
+  At the time of writing, the application of the Yue Pilon (Yue et al. 2002) is actively discouraged in the
+hydrologic community. This is because the trend free whitening procedure (TFWP) applied in the Yue Pilon
+method shows very high Type-I error rates with increasing autocorrelation and hence the rate of false trend
+detection with this method is unacceptable (Buerger 2017; Zhang and Zwiers 2004). This version of zyp has
+been modified to apply Zhang et al. 2000 trend detection methods as default.
+
+Additionally, preserve.range.for.sig.test is set to TRUE throughout to make sure significance is reinflated
+as per the Yue and Pilon paper exactly.
+
+
   This function includes two approaches to analyze for trend, the Zhang method and Yue and Pilon method. 
 These differ in their approach to pre-whitening to removing lag-1 autocorrelation. The magnitude of the
 trend is computed using the Theil-Sen approach (TSA).
@@ -28,17 +40,34 @@ controlled using the parameter 'preserve.range.for.sig.test'; setting
 this to 'FALSE' should give results which follow the Yue and Pilon paper exactly.
 }
 \references{
+\cite{Buerger, G., 2017. On trend detection. Hydrological Processes 31,
+  4039-4042. https://doi.org/10.1002/hyp.11280 }
+  
 \cite{Wang, X.L. and Swail, V.R., 2001. Changes in extreme wave heights
   in northern hemisphere oceans and related atmospheric circulation
-  regimes. Journal of Climate, 14: 2204-2221. }
-
+  regimes. Journal of Climate, 14: 2204-2221. 
+  https://doi.org/10.1175/1520-0442(2001)014%3c2204:COEWHI%3e2.0.CO;2 }
+  
 \cite{Yue, S., P. Pilon, B. Phinney and G. Cavadias, 2002. The influence
   of autocorrelation on the ability to detect trend in hydrological
-  series. Hydrological Processes, 16: 1807-1829.}
-
+  series. Hydrological Processes, 16: 1807-1829.
+  https://doi.org/10.1002/hyp.1095 }
+  
 \cite{Zhang, X., Vincent, L.A., Hogg, W.D. and Niitsoo, A.,
   2000. Temperature and Precipitation Trends in Canada during the
-  20th Century. Atmosphere-Ocean 38(3): 395-429.}
+  20th Century. Atmosphere-Ocean 38(3): 395-429.
+  https://doi.org/10.1080/07055900.2000.9649654 }
+  
+\cite{Zhang, X., Zwiers, F.W., 2004. Comment on "Applicability of
+  prewhitening to eliminate the influence of serial correlation on the
+  Mann-Kendall test" by Sheng Yue and Chun Yuan Wang. Water Resources 
+  Research 40. https://doi.org/10.1029/2003WR002073 }
+
+
+
+
+
+
 
 \cite{Sen, P.K., 1968. Estimates of the Regression Coefficient Based on
   Kendall's Tau. Journal of the American Statistical Association
