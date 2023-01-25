@@ -40,39 +40,28 @@ controlled using the parameter 'preserve.range.for.sig.test'; setting
 this to 'FALSE' should give results which follow the Yue and Pilon paper exactly.
 }
 \references{
+
 \cite{Buerger, G., 2017. On trend detection. Hydrological Processes 31,
-  4039-4042. https://doi.org/10.1002/hyp.11280 }
+  4039-4042. }
   
 \cite{Wang, X.L. and Swail, V.R., 2001. Changes in extreme wave heights
   in northern hemisphere oceans and related atmospheric circulation
-  regimes. Journal of Climate, 14: 2204-2221. 
-  https://doi.org/10.1175/1520-0442(2001)014%3c2204:COEWHI%3e2.0.CO;2 }
+  regimes. Journal of Climate, 14: 2204-2221. }
   
 \cite{Yue, S., P. Pilon, B. Phinney and G. Cavadias, 2002. The influence
   of autocorrelation on the ability to detect trend in hydrological
-  series. Hydrological Processes, 16: 1807-1829.
-  https://doi.org/10.1002/hyp.1095 }
+  series. Hydrological Processes, 16: 1807-1829. }
   
 \cite{Zhang, X., Vincent, L.A., Hogg, W.D. and Niitsoo, A.,
   2000. Temperature and Precipitation Trends in Canada during the
-  20th Century. Atmosphere-Ocean 38(3): 395-429.
-  https://doi.org/10.1080/07055900.2000.9649654 }
+  20th Century. Atmosphere-Ocean 38(3): 395-429. }
   
 \cite{Zhang, X., Zwiers, F.W., 2004. Comment on "Applicability of
   prewhitening to eliminate the influence of serial correlation on the
   Mann-Kendall test" by Sheng Yue and Chun Yuan Wang. Water Resources 
-  Research 40. https://doi.org/10.1029/2003WR002073 }
-
-
-
-
-
-
-
-\cite{Sen, P.K., 1968. Estimates of the Regression Coefficient Based on
-  Kendall's Tau. Journal of the American Statistical Association
-  Vol. 63, No. 324: 1379-1389.}
+  Research 40. }
 }
+
 \seealso{
 \code{\link{zyp.trend.csv}}, \code{\link{zyp.trend.vector}}.
 }

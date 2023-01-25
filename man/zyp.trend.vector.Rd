@@ -4,7 +4,7 @@
 \alias{zyp.yuepilon}
 \title{zyp.trend.vector}
 \description{
-  Computes a prewhitened linear trend on a vector of data. The zyp
+  Computes a prewhitened linear trend on a vector of data. The 'zyp'
   package  allows you to use either Zhang's method, or the Yue Pilon
   method of computing nonlinear prewhitened trends.
 }

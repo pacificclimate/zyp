@@ -70,11 +70,13 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
 }
 
 \seealso{
-\code{\link{zyp.trend.vector}}, \link{zyp-package}.
+\code{\link{zyp.trend.vector}}.
 }
 \examples{
-#zyp.trend.csv("in.csv", "out.csv", 2, "yuepilon", F)
-#trends <- zyp.trend.dataframe(indat, 2, "yuepilon")
+\dontrun{
+zyp.trend.csv("in.csv", "out.csv", 2, "yuepilon", F)
+trends <- zyp.trend.dataframe(indat, 2, "yuepilon")
+}
 }
 \keyword{ts}
 \keyword{robust}
