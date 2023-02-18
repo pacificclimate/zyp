@@ -10,11 +10,11 @@
   nonlinear prewhitened trends.
 }
 \usage{
-zyp.trend.dataframe(indat, metadata.cols, method=c("yuepilon", "zhang"),
-                    conf.intervals=TRUE, preserve.range.for.sig.test=TRUE)
+zyp.trend.dataframe(indat, metadata.cols, method=c("zhang", "yuepilon"),
+                    conf.intervals=TRUE, preserve.range.for.sig.test=FALSE)
 zyp.trend.csv(filename, output.filename, metadata.cols,
-              method=c("yuepilon", "zhang"), conf.intervals=TRUE,
-              csv.header=TRUE, preserve.range.for.sig.test=TRUE)
+              method=c("zhang", "yuepilon"), conf.intervals=TRUE,
+              csv.header=TRUE, preserve.range.for.sig.test=FALSE)
 }
 \arguments{
   \item{indat}{the input data frame.}
@@ -70,11 +70,13 @@ zyp.trend.csv(filename, output.filename, metadata.cols,
 }
 
 \seealso{
-\code{\link{zyp.trend.vector}}, \link{zyp-package}.
+\code{\link{zyp.trend.vector}}.
 }
 \examples{
-#zyp.trend.csv("in.csv", "out.csv", 2, "yuepilon", F)
-#trends <- zyp.trend.dataframe(indat, 2, "yuepilon")
+\dontrun{
+zyp.trend.csv("in.csv", "out.csv", 2, "yuepilon", F)
+trends <- zyp.trend.dataframe(indat, 2, "yuepilon")
+}
 }
 \keyword{ts}
 \keyword{robust}

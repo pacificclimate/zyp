@@ -1,0 +1,16 @@
+export(zyp.sen)
+export(confint.zyp)
+export(zyp.trend.vector)
+export(zyp.trend.csv)
+export(zyp.trend.dataframe)
+export(zyp.zhang)
+export(zyp.yuepilon)
+
+
+importFrom("stats", "acf", "confint", "lm", "median", "na.pass",
+             "qnorm", "terms", "var")
+importFrom("utils", "read.csv", "write.csv")
+
+importFrom("Kendall", "Kendall")
+
+S3method("confint", "zyp")
