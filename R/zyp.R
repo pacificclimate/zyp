@@ -187,16 +187,11 @@ zyp.yuepilon <- function(y, x=1:length(y), conf.intervals=TRUE, preserve.range.f
   yt <- yt.prime[1:(n-1)] + trend * t.prime
   dmap.prime <- which(!is.na(yt))
   ytnm <- as.numeric(yt[dmap.prime])
-  t.prime <- t.prime[dmap.prime]
 
   # Calculate the Mann-Kendall test for significance on the blended series
-  Kend <- Kendall(t.prime,ytnm)
+  Kend <- Kendall(t.prime[dmap.prime],ytnm)
   tau <- Kend[1]
   Bsig <- Kend[2]
-
-  # Calculate slope on pre-whitened data
-  sen <- zyp.sen(ytnm ~ t.prime)
-  trend <- sen$coefficients[2]
 
   if(conf.intervals) {
     ci <- confint(sen)
