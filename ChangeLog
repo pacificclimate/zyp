@@ -1,3 +1,8 @@
+Changes from version 0.11 to 0.11-1
+	* Updated changelog, which was forgotten in last update
+Changes from version 0.10-1 to 0.11
+        * Changed default method from Yue-Pilon to Zhang
+	* Changed default value for preserve.range.for.dig.test from TRUE to FALSE
 Changes from version 0.9-3 to 0.10-1:
 	* CHECK YOUR CODE. This version may cause code which does not use named parameters for conf.intervals and method for zyp.trend.vector, zyp.trend.yuepilon, and zyp.trend.zhang to fail. Naming the parameters will make the code work again.
 	* Added options to zyp.trend.vector to allow the user to supply time data instead of assuming even spacing.
