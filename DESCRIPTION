@@ -1,6 +1,6 @@
 Package: zyp
-Version: 0.11
-Date: 2022-12-13
+Version: 0.11-1
+Date: 2023-03-22
 Title: Zhang + Yue-Pilon Trends Package
 Authors@R:c(person("David", "Bronaugh", email="bronaugh@uvic.ca", role="aut"), person("Arelia", "Schoeneberg", email="wernera@uvic.ca", role="aut"), person("Lee", "Zeman", email="lzeman@uvic.ca", role="cre"))
 Depends: R (>= 2.4.0), Kendall
